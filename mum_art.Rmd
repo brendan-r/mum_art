@@ -57,7 +57,9 @@ mum_cols <- c("#7F7F7F", "#FBCC0C", "#4351D6", "#F01E21", "#00A5E5", "#FFEE0B",
 #' @param colours
 #'
 plot_matrix <- function(n1 = 1, n2 = 35, fun = tens_col, colours = mum_cols) {
-  a <- matrix(rep(c(n1:n2, n2:n1), each = n2 * 2), ncol = n2 * 2)
+  a <- matrix(rep(c(n1:n2, n2:n1), each = (n2 - n1 + 1) * 2),
+              ncol = (n2 - n1 + 1) * 2)
+  
   m <- fun(a * t(a))
   class(m) <- "numeric"
   par(mar = rep(0, 4))
